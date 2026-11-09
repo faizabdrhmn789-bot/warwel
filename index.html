@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warwel Coffee - Warung kopi untuk ngobrol lama</title>
+  <meta name="description" content="Warwel Coffee: kopi tubruk, kopi susu, dan camilan hangat. Lihat menu dan pesan lewat WhatsApp.">
+
+  <!-- Font dari Google Fonts: Alfa Slab One untuk judul, Figtree untuk isi -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== 1. Warna & pengaturan dasar =====
+       Cuma 4 warna utama. Ganti di sini, seluruh halaman ikut berubah. */
+    :root {
+      --putih: #F6F7F2;   /* latar halaman */
+      --biru: #1B3A8C;    /* biru gelas enamel: warna utama */
+      --merah: #C4302B;   /* merah tenda warung: harga & tombol */
+      --kopi: #3A2418;    /* cokelat kopi: teks & bagian kontak */
+      --garis: #B9C1DD;   /* titik-titik di menu */
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Figtree", system-ui, sans-serif;
+      background: var(--putih);
+      color: var(--kopi);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    /* Garis fokus supaya navigasi pakai keyboard tetap terlihat */
+    :focus-visible { outline: 3px solid var(--merah); outline-offset: 3px; }
+
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+    h1, h2, h3 {
+      font-family: "Alfa Slab One", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--biru); margin-bottom: 28px; }
+
+    /* ===== 2. Bagian atas (hero) ===== */
+    .hero { background: var(--biru); color: var(--putih); padding-top: 20px; }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 56px;
+    }
+    .nav .merek { font-family: "Alfa Slab One", Georgia, serif; font-size: 1.25rem; text-decoration: none; }
+    .nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+
+    .hero h1 { font-size: clamp(3rem, 11vw, 7rem); margin-bottom: 20px; }
+    .hero p { max-width: 46ch; font-size: 1.15rem; margin: 0 0 32px; }
+    .aksi { display: flex; flex-wrap: wrap; gap: 12px; padding-bottom: 72px; }
+
+    .tombol {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 2px solid var(--putih);
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .tombol-utama { background: var(--putih); color: var(--biru); }
+    .tombol-utama:hover { background: #fff; }
+    .tombol-polos { color: var(--putih); }
+    .tombol-polos:hover { background: rgba(255, 255, 255, 0.14); }
+
+    /* Garis merah-putih seperti tenda warung */
+    .tenda {
+      height: 18px;
+      background: repeating-linear-gradient(90deg, var(--merah) 0 36px, var(--putih) 36px 72px);
+    }
+
+    /* ===== 3. Papan menu ===== */
+    .menu { padding: 72px 0; }
+
+    .papan {
+      background: #fff;
+      border: 6px solid var(--biru);
+      outline: 2px solid var(--biru);
+      outline-offset: 4px;
+      border-radius: 10px;
+      padding: 32px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 56px;
+    }
+
+    .papan h3 { font-size: 1.35rem; color: var(--biru); margin-bottom: 16px; }
+    .papan ul { list-style: none; margin: 0; padding: 0; }
+    .papan li { margin-bottom: 16px; }
+
+    .baris { display: flex; align-items: baseline; gap: 8px; }
+    .nama { font-weight: 700; }
+    .titik { flex: 1; border-bottom: 2px dotted var(--garis); transform: translateY(-4px); }
+    .harga { color: var(--merah); font-weight: 700; white-space: nowrap; }
+    .ket { margin: 2px 0 0; font-size: 0.95rem; color: #6B5A50; }
+
+    /* ===== 4. Tentang ===== */
+    .tentang { padding-bottom: 72px; }
+    .tentang p { max-width: 60ch; font-size: 1.1rem; margin: 0 0 16px; }
+
+    /* ===== 5. Kontak & lokasi ===== */
+    .kontak { background: var(--kopi); color: var(--putih); padding: 64px 0; }
+    .kontak h2 { color: var(--putih); }
+    .info { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 56px; }
+    .info h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .info p { margin: 0 0 6px; }
+    .tombol-wa { background: var(--merah); border-color: var(--merah); color: #fff; margin-top: 28px; }
+    .tombol-wa:hover { background: #A8261F; border-color: #A8261F; }
+
+    footer { background: var(--kopi); color: var(--putih); padding: 0 0 28px; font-size: 0.9rem; }
+    footer .wrap { border-top: 1px solid rgba(246, 247, 242, 0.25); padding-top: 20px; }
+
+    /* ===== 6. Tampilan HP ===== */
+    @media (max-width: 720px) {
+      .papan, .info { grid-template-columns: 1fr; }
+      .papan { padding: 24px 18px; }
+      .nav { padding-bottom: 40px; }
+    }
+
+    /* Hormati pengguna yang mematikan animasi */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Bagian atas ===== -->
+  <header class="hero">
+    <div class="wrap">
+      <nav class="nav" aria-label="Menu utama">
+        <a class="merek" href="#">Warwel Coffee</a>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#kontak">Lokasi</a></li>
+        </ul>
+      </nav>
+
+      <h1>Warwel Coffee</h1>
+      <p>Warung kopi untuk ngobrol lama. Kopi diseduh saat kamu pesan, camilan keluar masih hangat.</p>
+
+      <div class="aksi">
+        <!-- GANTI 6281234567890 dengan nomor WhatsApp asli (awali 62, tanpa 0 dan tanpa +) -->
+        <a class="tombol tombol-utama" href="https://wa.me/6281234567890?text=Halo%20Warwel%20Coffee%2C%20saya%20mau%20pesan">Pesan lewat WhatsApp</a>
+        <a class="tombol tombol-polos" href="#menu">Lihat menu</a>
+      </div>
+    </div>
+    <div class="tenda" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===== Menu ===== -->
+    <section class="menu" id="menu">
+      <div class="wrap">
+        <h2>Menu hari ini</h2>
+
+        <div class="papan">
+          <div>
+            <h3>Kopi</h3>
+            <ul>
+              <li>
+                <div class="baris"><span class="nama">Kopi Tubruk</span><span class="titik"></span><span class="harga">Rp8.000</span></div>
+                <p class="ket">Bubuk kopi diseduh langsung di gelas.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Kopi Susu Warwel</span><span class="titik"></span><span class="harga">Rp15.000</span></div>
+                <p class="ket">Espresso, susu segar, gula aren.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Es Kopi Gula Aren</span><span class="titik"></span><span class="harga">Rp16.000</span></div>
+                <p class="ket">Dingin dan manis sedang.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Americano</span><span class="titik"></span><span class="harga">Rp14.000</span></div>
+                <p class="ket">Panas atau dingin, tanpa gula.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Non-kopi dan camilan</h3>
+            <ul>
+              <li>
+                <div class="baris"><span class="nama">Teh Tubruk</span><span class="titik"></span><span class="harga">Rp6.000</span></div>
+                <p class="ket">Pekat, bisa pakai gula atau tawar.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Cokelat Panas</span><span class="titik"></span><span class="harga">Rp15.000</span></div>
+                <p class="ket">Cokelat asli dengan susu.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Pisang Goreng</span><span class="titik"></span><span class="harga">Rp10.000</span></div>
+                <p class="ket">Lima potong, tepung renyah.</p>
+              </li>
+              <li>
+                <div class="baris"><span class="nama">Roti Bakar Cokelat Keju</span><span class="titik"></span><span class="harga">Rp14.000</span></div>
+                <p class="ket">Roti tebal, dipanggang sampai pinggirnya garing.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Tentang ===== -->
+    <section class="tentang">
+      <div class="wrap">
+        <h2>Dari warung kecil di pojok jalan</h2>
+        <!-- Teks di bawah hanya contoh. Ganti dengan cerita usaha yang sebenarnya. -->
+        <p>Warwel Coffee dibuka tahun 2020 dengan dua meja dan satu teko. Sekarang tempatnya lebih luas, tapi caranya tetap sama: biji kopi dari petani lokal, disangrai tiap minggu, diseduh saat dipesan.</p>
+        <p>Datang sendirian untuk kerja, atau bawa teman untuk main kartu. Kursinya cukup lama untuk dua-tiga gelas.</p>
+      </div>
+    </section>
+
+    <!-- ===== Kontak & lokasi ===== -->
+    <section class="kontak" id="kontak">
+      <div class="wrap">
+        <h2>Datang ke Warwel</h2>
+
+        <div class="info">
+          <div>
+            <h3>Jam buka</h3>
+            <p>Senin sampai Jumat: 07.00 - 22.00</p>
+            <p>Sabtu dan Minggu: 07.00 - 23.00</p>
+          </div>
+          <div>
+            <h3>Alamat</h3>
+            <!-- GANTI dengan alamat asli. Peta bisa ditambah lewat Google Maps > Bagikan > Sematkan peta -->
+            <p>Jl. Contoh No. 12, Jakarta</p>
+            <p>Parkir motor tersedia di depan.</p>
+          </div>
+        </div>
+
+        <a class="tombol tombol-wa" href="https://wa.me/6281234567890?text=Halo%20Warwel%20Coffee%2C%20saya%20mau%20pesan">Pesan lewat WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">&copy; 2026 Warwel Coffee</div>
+  </footer>
+
+</body>
+</html>
