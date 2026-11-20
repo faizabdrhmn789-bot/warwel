@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coffeshop - Warung kopi untuk ngobrol lama</title>
+  <title>Warwel Coffee - Warung kopi untuk ngobrol lama</title>
   <meta name="description" content="Warwel Coffee: kopi tubruk, kopi susu, dan camilan hangat. Lihat menu dan pesan lewat WhatsApp.">
 
   <!-- Font dari Google Fonts: Alfa Slab One untuk judul, Figtree untuk isi -->
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ===== 1. Warna & pengaturan dasar =====
+    /*===== 1. Warna & pengaturan dasar =====
        Cuma 4 warna utama. Ganti di sini, seluruh halaman ikut berubah. */
     :root {
       --putih: #F6F7F2;   /* latar halaman */
@@ -56,7 +56,7 @@
   background-color: var(--merah);   /* cadangan kalau foto gagal dimuat */
   background-image:
     linear-gradient(rgba(139, 0, 0, 0.9), rgba(139, 0, 0, 0.4)),
-    url("552062.jpg");
+    url(/552062.jpg);
   background-size: cover;           /* foto memenuhi area */
   background-position: center;      /* bagian tengah foto yang tampil */
   color: var(--putih);
@@ -67,11 +67,45 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       gap: 16px;
       padding-bottom: 56px;
     }
-    .nav .merek { font-family: "Alfa Slab One", Georgia, serif; font-size: 1.25rem; text-decoration: none; }
-    .nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    .nav .merek { 
+      font-family: "Alfa Slab One", Georgia , serif; 
+      font-size: 1.55rem;
+      text-decoration: none; 
+      padding-right: 100px;
+      
+    }
+    .nav ul {
+      display: flex;  
+      gap: 12px; 
+      list-style: none;
+      margin: 0; 
+      padding: 0px; 
+      
+    }
+    .nav ul a {
+      display: inline-block;
+      border: 1px solid darkred;
+      background-color: #fff;
+      color: darkred;
+      padding: 6px;
+      text-decoration: none; 
+      border-radius: 12px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      transition:all 0.3s;
+    }
+    .nav ul a:hover {
+      background-color:  darkred;
+      color: #fff;
+      transform:scale(1.1);
+      cursor: pointer;
+      border: 1px solid #fff;
+
+    }
 
     .hero h1 { font-size: clamp(3rem, 11vw, 7rem); margin-bottom: 20px; }
     .hero p { max-width: 50ch; font-size: 1.15rem; margin: 0 0 302px;}
@@ -87,9 +121,11 @@
     }
     .tombol-utama { background: var(--putih); color: var(--biru); }
     .tombol-utama:hover { 
-      background: #fff; 
-      transform:scale(1.05);
+      background: darkred; 
+      transform:scale(1.019);
       transition:all 0.3s;
+      color: #fff;
+      
     }
     .tombol-polos { color: var(--putih); }
     .tombol-polos:hover { background: rgba(255, 255, 255, 0.14); }
@@ -110,20 +146,20 @@
       outline-offset: 4px;
       border-radius: 10px;
       padding: 32px 28px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 56px;
+      gap: 32px;
     }
 
     .papan h3 { font-size: 1.35rem; color: var(--biru); margin-bottom: 16px; }
-    .papan ul { list-style: none; margin: 0; padding: 0; }
+    .papan ul { list-style: none; display: grid;display: flex;flex-wrap: wrap;
+grid-template-columns: repeat(3, 1fr); margin: 0 auto;gap: 10px; padding: 0; }
     .papan li { margin-bottom: 16px; }
 
-    .baris { display: flex; align-items: baseline; gap: 8px; }
+    .baris { display: flex;flex-direction:column; flex-wrap: wrap;align-items: baseline; gap: 8px; }
     .nama { font-weight: 700; }
-    .titik { flex: 1; border-bottom: 2px dotted var(--garis); transform: translateY(-4px); }
-    .harga { color: var(--merah); font-weight: 700; white-space: nowrap; }
-    .ket { margin: 2px 0 0; font-size: 0.95rem; color: #6B5A50; }
+    .harga { color: var(--merah); font-weight: 700; white-space: nowrap; margin-top: 1px; }
+    .ket { margin: 2px 0 0;  
+    text-align: right;
+    font-size: 0.95rem; color: #6B5A50; }
 
     /* ===== 4. Tentang ===== */
     .tentang { padding-bottom: 72px; }
@@ -176,6 +212,15 @@
   color: #FFD60A;            /* kuning seperti proyek lama; ganti ke warna Warwel kalau mau */
   transform: scale(1.1);
 }
+.newcard {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid darkgrey;
+  width: 300px;
+  background:lightgrey;
+  padding: 16px;
+  border-radius: 8px;
+}
 
   </style>
 </head>
@@ -186,7 +231,7 @@
   <header class="hero">
     <div class="wrap">
       <nav class="nav" aria-label="Menu utama">
-        <a class="merek" href="#">Coffeshop</a>
+        <a class="merek" href="#">Warwel Coffee</a>
         <ul>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#kontak">Lokasi</a></li>
@@ -198,7 +243,7 @@
 
       <div class="aksi">
         <!-- GANTI 6281234567890 dengan nomor WhatsApp asli (awali 62, tanpa 0 dan tanpa +) -->
-        <a class="tombol tombol-utama" href="https://wa.me/6282340205686" target="_blank" rel="noopener" aria-label="WhatsApp" >Pesan lewat WhatsApp<i class="fa-brands fa-whatsapp"></i></a>
+        <a class="tombol tombol-utama" href="https://wa.me/6282340205686" target="_blank" rel="noopener" aria-label="WhatsApp" >Pesan lewat WhatsApp    <i class="fa-brands fa-whatsapp"></i></a>
         <a class="tombol tombol-polos" href="#menu">Lihat menu</a>
       </div>
     </div>
@@ -217,30 +262,43 @@
             <h3>Kopi</h3>
             <ul>
               <li>
-                <div class="baris"><span class="nama">Americano</span><span class="titik"></span><span class="harga">Rp8.000</span></div>
+                <div class="newcard">
+                <div class="baris"><span class="nama">Americano</span><span class="titik"></span><span class="harga">Rp8.000</span>
+                </div>
+                </div>
                 
               </li>
                 <li>
+                <div class="newcard">  
                 <div class="baris"><span class="nama">Torabika susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
-                </li>
+                </div>
+              </li>
                <li>
-                <div class="baris"><span class="nama">Teh Tarik susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Teh Tarik susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
+                 </div>
+              </li>
+             
+             
+              <li>
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Good day Susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
+                 </div>
               </li>
               <li>
-                <div class="baris"><span class="nama">Good day Susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
-                
-              </li>
-              <li>
-                <div class="baris"><span class="nama">Es Kopi Gula Aren</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
-              
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Es Kopi Gula Aren</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
+                 </div>
               </li>
                <li>
-                <div class="baris"><span class="nama">Butterscotch</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
-              
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Butterschott</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
+                </div>  
               </li>
                <li>
-                <div class="baris"><span class="nama">Spanish Latte</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
-              
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Spanish Latte</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
+                </div>  
               </li>
              
              
@@ -251,23 +309,28 @@
             <h3>Non-kopi dan camilan</h3>
             <ul>
               <li>
-                <div class="baris"><span class="nama">Teh Es/Hangat</span><span class="titik"></span><span class="harga">Rp6.000</span></div>
-                
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Teh Es/Hangat</span><span class="titik"></span><span  class="harga">Rp6.000</span></div>
+                </div>
               </li>
               <li>
-  <div class="baris"><span class="nama">Extra joss susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
-  
-</li>
+                <div class="newcard">
+                 <div class="baris"><span class="nama">Extra joss susu</span><span class="titik"></span><span class="harga">Rp9.000</span></div>
+                </div>
               <li>
-                <div class="baris"><span class="nama">Leci Tea</span></span><span class="titik"></span><span class="harga">Rp9.000</span></div>
-               
+                <div class="newcard">
+                <div class="baris"><span class="nama">Lychee Tea</span></span><span class="titik"></span><span class="harga">Rp9.000</span></div>
+                </div>
               </li>
               <li>
+                <div class="newcard">
                 <div class="baris"><span class="nama">Red Velvet</span><span class="titik"></span><span class="harga">Rp12.000</span></div>
-
+                </div>
               </li>
               <li>
-  <div class="baris"><span class="nama">Indomie </span><span class="titik"></span><span class="harga">Rp8.000</span></div><p class="ket">+telur Rp4.000</p>
+                <div class="newcard">
+  <div class="baris"><span class="nama">Indomie </span><span class="titik"></span><p class="ket">+telur Rp4.000</p><span class="harga">Rp8.000</span></div>
+                </div>
   
 </li>
             </ul>
@@ -318,6 +381,25 @@
     </section>
 
   </main>
+  <script>
+    const items = document.querySelectorAll(
+  '.skill-card, .about-content, .social-links a'
+);
+items.forEach(el => el.classList.add('reveal'));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('show');
+    if (entry.target.classList.contains('about-content')) {
+      document.querySelectorAll('.stat h3').forEach(countUp);
+    }
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.1 });
+
+items.forEach(el => observer.observe(el));
+  </script>
 
   <footer>
     <div class="wrap">&copy; 2026 Warwel Coffee</div>
